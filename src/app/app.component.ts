@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { fromEvent, Observable, Observer, Subscriber } from 'rxjs';
+import { fromEvent, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -69,8 +69,7 @@ export class AppComponent implements AfterViewInit, OnInit {
     this.setText(result.ok)
   }
 
-  testeObservable(){
-     
+  testeObservable(){     
     let clique = fromEvent(this.btnObservable.nativeElement, 'click').pipe(
     switchMap((event:any) => this.checkAuthObservable()),
     switchMap((isAuth:any) => {
@@ -80,8 +79,7 @@ export class AppComponent implements AfterViewInit, OnInit {
     }))
     .subscribe((result:any) => {
       this.setText(result.ok)
-    })
-    
+    })    
   }
 
   testePromise(){
